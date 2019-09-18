@@ -11,3 +11,7 @@
 )
 (sum-square-larger-two a b c)
 )
+
+(f 1 2 3)
+
+(f 5 4 -6)
