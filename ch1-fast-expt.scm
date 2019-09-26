@@ -5,3 +5,6 @@
 
 (define (even? n)
     (= (remainder n 2) 0))
+
+(fast-expt 2 16)
+(fast-expt 2 32)
