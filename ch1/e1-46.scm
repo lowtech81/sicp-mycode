@@ -8,7 +8,7 @@
                 (if (good-enough guess next)
                     next
                     (try next))))
-    (lambda (x) (try x)))
+    try)
 
 ; use iterative-improve to define sqrt
 (define delta1 0.00001)
