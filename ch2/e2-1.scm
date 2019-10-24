@@ -27,10 +27,10 @@
        (* (denom x) (denom y))))
 
 (define (make-rat n d)
-    (let ((g (gcd n d)))
-        (if (< (* n d) 0)
-            (cons (- (abs (/ n g))) (abs (/ d g)))
-            (cons (abs (/ n g)) (abs (/ d g))))))
+    (let ((g (abs (gcd n d))))
+        (if (< d 0)
+            (cons (- (/ n g)) (- (/ d g)))
+            (cons (/ n g) (/ d g)))))
 
 (define (numer x) (car x))
 
