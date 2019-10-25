@@ -44,3 +44,7 @@
 (define three (+ one two))
 ((three square) 2)
 ((three 1+) 2)
+
+(define four (+ two two))
+((four square) 2)
+((four 1+) 2)
