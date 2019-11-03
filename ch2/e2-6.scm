@@ -3,7 +3,7 @@
 ; numbers (at least insofar as nonnegative integers are concerned) by implementing 0 
 ; and the operation of adding 1 as 
 ; (define zero (lambda (f) (lambda (x) x)))
-;     (define (add-1 n) 
+; (define (add-1 n) 
 ;         (lambda (f) (lambda (x) (f ((n f) x)))))
 ; This representation is known as Church numerals, after its inventor, Alonzo Church,
 ; the logician who invented the λ-calculus. Define one and two directly (not in 
@@ -48,3 +48,16 @@
 (define four (+ two two))
 ((four square) 2)
 ((four 1+) 2)
+
+(define (* n1 n2)
+    (lambda (f) (lambda (x) ((n2 (n1 f)) x))))
+
+(((* three four) 1+) 2)
+
+(define (pred   n) (lambda (f) (lambda (x) (((n (lambda (g) (lambda (h) (h (g f))))) (lambda (u) x)) (lambda (u) u)))))
+
+(((pred three) 1+) 2)
+
+(define (sub  m n) (lambda (f) (lambda (x) ((((n pred) m) f) x))))
+
+(((sub four two) 1+) 2)
