@@ -72,13 +72,17 @@
 
 (define empty-board nil)
 
+; a board position is represent as a list of (col row) pair
+; for example: ((2 1) (3 4) (1 3))
 (define (adjoin-position new-row k rest-of-queens)
     (cons (list k new-row) rest-of-queens))
 
 (define (safe? k positions)
-    (let ((k-position (car positions))
-          (rest-positions (cdr positions))
-          (k-row (cadr (car positions))))
+    (let ((k-position (car positions))  ;the k-th column position
+          (rest-positions (cdr positions)) ; the 1 to k-1 column position
+          (k-row (cadr (car positions)))) ; the row num of the k-th position
+        ; check if the position in this column is not safe for the new k-th 
+        ; column posiiton 
         (define (check column)  
             (if (= column 0)
                 #t
@@ -93,7 +97,9 @@
                             rest-positions)))))
         (check (- k 1))))
 
-; print (queens n)
+; print (queens n) in a better look which every answer is like (row1 row2 row3) 
+; where column represented by element index and corresponding row represented 
+; by element itself  
 (define (print-queens n)
     (newline)
     (map (lambda (x) 
