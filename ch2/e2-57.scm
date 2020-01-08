@@ -107,6 +107,3 @@
             (cons '* m-part))))
 
 (deriv '(* x y (+ x 3)) 'x)
-
-
-
