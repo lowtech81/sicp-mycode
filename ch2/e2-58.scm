@@ -145,7 +145,7 @@
         (if (null? (cdddr s))
             (caddr s)
             (cddr s))
-        (augend (cdr s)))))
+        (multiplicand (cdr s)))))
 
 (define (make-sum a1 a2)
   (cond ((=number? a1 0) a2)
