@@ -32,12 +32,14 @@
               ((< x2 x1)
                (olist-intersection-set set1 (cdr set2)))))))
 
-; the balanced binary trees edition union-set and intersection-set
+; The balanced binary trees edition `union-set` and `intersection-set`
+; As `list->tree`,`olist-union-set`,`olist-intersection-set` and `tree->list-2`
+; are all O(n), so `union-set` and `intersection-set` below are also O(n)  
 (define (union-set set1 set2)
-    (list->tree (olist-union-set (tree->list-1 set1) (tree->list-1 set2))))
+    (list->tree (olist-union-set (tree->list-2 set1) (tree->list-2 set2))))
 
 (define (intersection-set set1 set2)
-    (list->tree (olist-intersection-set (tree->list-1 set1) (tree->list-1 set2))))
+    (list->tree (olist-intersection-set (tree->list-2 set1) (tree->list-2 set2))))
 
 ;test
 (union-set (list->tree '(1 3 5 7 9 11)) (list->tree '(2 4 6 8 10 12)))
