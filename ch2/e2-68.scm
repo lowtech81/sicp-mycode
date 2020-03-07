@@ -53,6 +53,6 @@
 
 (encode sample-message sample-tree)
 
-(define wrong-message '(a x d a b b c a)) ; should report error message
+; (define wrong-message '(a x d a b b c a)) ; should report error message
 
-(encode wrong-message sample-tree)
+; (encode wrong-message sample-tree)
