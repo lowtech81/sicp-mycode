@@ -13,7 +13,7 @@
 ; ------------------------------------------------------------
 
 (load "../common.scm")
-(load "2.3.2.scm")
+(load "2.3.2-deriv.scm")
 
 (define (deriv exp var)
   (cond ((number? exp) 0)
