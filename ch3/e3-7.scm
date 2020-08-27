@@ -38,21 +38,25 @@
     dispatch)
 
 
+; (define (make-joint account account-password joint-password)
+;     (define (withdraw amount)
+;         ((account account-password 'withdraw) amount))
+;     (define (deposit amount)
+;         ((acount account-password 'deposit) amount))
+;     (define (dispatch p m)
+;         (if (eq? p joint-password)
+;             (cond ((eq? m 'withdraw) withdraw)
+;                   ((eq? m 'deposit) deposit)
+;                   (else (error "Unknown request -- MAKE-ACCOUNT"
+;                         m)))
+;             (lambda (x)  "Incorrect joint password")))
+;     dispatch)
+
 (define (make-joint account account-password joint-password)
-    (define (withdraw amount)
-        ((account account-password 'withdraw) amount))
-    (define (deposit amount)
-        ((acount account-password 'deposit) amount))
-    (define (dispatch p m)
-        (if (eq? p joint-password)
-            (cond ((eq? m 'withdraw) withdraw)
-                  ((eq? m 'deposit) deposit)
-                  (else (error "Unknown request -- MAKE-ACCOUNT"
-                        m)))
-            (lambda (x)  "Incorrect joint password")))
-    dispatch)
-
-
+    (lambda (password m)
+        (if (eq? password joint-password)
+            (account account-password m)
+            "Incorrect joint password")))
 ; test code 
 
 (define peter-acc (make-account 100 'open-sesame))
